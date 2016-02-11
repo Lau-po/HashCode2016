@@ -6,7 +6,6 @@ public class CreateArray {
 	private ArrayList[][] tab;
 
 	public CreateArray(int x, int y) {
-		this.tab = tab;
 		tab = new ArrayList[x][y];
 	}
 
