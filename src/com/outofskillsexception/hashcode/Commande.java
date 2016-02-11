@@ -25,6 +25,10 @@ public class Commande {
 		return remeaning;
 	}
 	
+	public Map<Item, Integer> getDemmande() {
+		return demmande;
+	}
+	
 	public boolean delivry(Item item) {
 		if (demmande.get(item) == null || demmande.get(item) <= 0) {
 			return false;
