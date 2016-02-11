@@ -16,6 +16,13 @@ public class Read {
 	private int deadline;
 	private int maxLoad;
 	
+	private int numberItemTypes;
+	private int[] itemWeight;
+	
+	private int numberWarehouse;
+	private int[][] warehousePosition;
+	private int[][] warehouseItems;
+	
 	public Read(String file) {
 		this(new File(file));
 	}
@@ -33,6 +40,21 @@ public class Read {
 			BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
 			
 			readFirstLine(bufferedReader.readLine());
+			
+			readNumberItemTypes(bufferedReader.readLine());
+			
+			readItemWeight(bufferedReader.readLine());
+			
+			readNumberWarehouse(bufferedReader.readLine());
+			
+			warehousePosition = new int[numberWarehouse][2];
+			warehouseItems = new int[numberWarehouse][numberItemTypes];
+			
+			for (int i = 0; i < numberWarehouse; i++) {
+				readPosition(bufferedReader.readLine(), i);
+				readItems(bufferedReader.readLine(), i);
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -50,6 +72,45 @@ public class Read {
 		numberOfDrones = Integer.parseInt(params[2]);
 		deadline = Integer.parseInt(params[3]);
 		maxLoad = Integer.parseInt(params[4]);	
+	}
+	
+	/**
+	 * Read the number of item type
+	 */
+	public void readNumberItemTypes(String line) throws Exception {
+		numberItemTypes = Integer.parseInt(line);
+	}
+	
+	/**
+	 * Read the item weight
+	 */
+	public void readItemWeight(String line) throws Exception {
+		String[] params = line.split(" ");
+		
+		itemWeight = new int[numberItemTypes];
+		
+		for (int i = 0; i < params.length; i++) {
+			itemWeight[i] = Integer.parseInt(params[i]);
+		}
+	}
+	
+	public void readNumberWarehouse(String line) throws Exception {
+		numberWarehouse = Integer.parseInt(line);
+	}
+	
+	public void readPosition(String line, int warehouse) {
+		String[] params = line.split(" ");
+		
+		warehousePosition[warehouse][0] = Integer.parseInt(params[0]);
+		warehousePosition[warehouse][1] = Integer.parseInt(params[1]);
+	}
+	
+	public void readItems(String line, int warehouse) {
+		String[] params = line.split(" ");
+		
+		for (int i = 0; i < numberItemTypes; i++) {
+			warehouseItems[warehouse][i] = Integer.parseInt(params[i]);
+		}
 	}
 
 }
