@@ -4,6 +4,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 
+import com.outofskillsexception.hashcode.CreateArray;
+import com.outofskillsexception.hashcode.Item;
+import com.outofskillsexception.hashcode.Warehouse;
+
 public class Read {
 	
 	private final File file;
@@ -71,6 +75,23 @@ public class Read {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+	}
+	
+	/**
+	 * create classes
+	 */
+	public void createClasses() {
+		
+		CreateArray map = new CreateArray(row, column);
+		
+		Item[] items = new Item[numberItemTypes];
+		
+		for (int i = 0; i < items.length; i++) {
+			items[i] = new Item(i, itemWeight[i]);
+		}
+		
+		Warehouse[] warehouses = new Warehouse[numberWarehouse];
 		
 	}
 	

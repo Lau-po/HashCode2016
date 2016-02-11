@@ -1,13 +1,15 @@
 package com.outofskillsexception.hashcode;
 
+import java.util.Map;
+
 public class Warehouse {
 	int[] pos;
 	int id;
-	int[] stock;
+	Map<Item, Integer> stock;
 
-	public Warehouse(int id, int[] pos, int[][] stock) {
+	public Warehouse(int id, int[] pos, Map<Item, Integer> stock) {
 		this.pos = pos;
-		this.stock = stock[id];
+		this.stock = stock;
 		this.id = id;
 	}
 
@@ -27,11 +29,11 @@ public class Warehouse {
 		this.id = id;
 	}
 
-	public int[] getStock() {
+	public Map<Item, Integer> getStock() {
 		return stock;
 	}
-
-	public void setStock(int[] stock) {
+	
+	public void setStock(Map<Item, Integer> stock) {
 		this.stock = stock;
 	}
 	
