@@ -1,19 +1,19 @@
 package com.outofskillsexception.hashcode;
 
 import java.awt.Point;
+import java.util.*;
 
 public class Drone {
 	private int weight,id;
 	private Point pos;
-	private Item item;
+	private List<Item> item = new ArrayList<Item>();
 	private boolean free= false;
 
-	public Drone(int id, int weight, int x, int y, Item item) {
+	public Drone(int id, int weight, int x, int y) {
 		// TODO Auto-generated constructor stub
 		this.weight = weight;
 		this.id = id;
 		this.pos = new Point(x,y);
-		this.item = item;
 	}
 
 	
@@ -49,11 +49,19 @@ public class Drone {
 		this.pos.setLocation(x, y);;
 	}
 
-	public Item getItem() {
+	public List<Item> getItems() {
 		return item;
 	}
+	
+	public boolean haveItem(Item i) {
+		return item.contains(i);
+	}
+	
+	public boolean removeItems(Item i) {
+		return item.remove((Object)i);
+	}
 
-	public void setItem(Item item) {
-		this.item = item;
+	public void addItem(Item item) {
+		this.item.add(item);
 	}
 }
