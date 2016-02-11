@@ -21,10 +21,16 @@ public class Writter {
 		INSTANCE.commandes.add(drone + " D " + order + " " + product + " " + amount);
 	}
 	
+	public static void wait(int drone, int turn) {
+		INSTANCE.commandes.add(drone + " W " + turn);
+	}
+	
 	public static void save(File file) throws IOException {
 		file.createNewFile();
 		
 		PrintWriter writter = new PrintWriter(file);
+		
+		writter.println(INSTANCE.commandes.size());
 		
 		for (String line : INSTANCE.commandes) {
 			writter.println(line);
