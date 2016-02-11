@@ -5,6 +5,7 @@ import java.util.*;
 
 public class Drone {
 	private int weight,id;
+	private float timeOut;
 	private Point pos;
 	private List<Item> item = new ArrayList<Item>();
 	private boolean free= false;
@@ -15,7 +16,17 @@ public class Drone {
 		this.id = id;
 		this.pos = new Point(x,y);
 	}
-
+	
+	public void setTimeOut(float i){
+		timeOut = i;
+	}
+	
+	public void update(){
+		timeOut-=1;
+		if(timeOut <= 0){
+			setFree(true);
+		}
+	}
 	
 	public boolean isFree() {
 		return free;
