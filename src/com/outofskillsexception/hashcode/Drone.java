@@ -90,4 +90,12 @@ public class Drone {
 			qte = 1;
 		this.item.put(item, qte);
 	}
+	
+	public int getCurrentWeight(){
+		int total = 0;
+		for(Map.Entry<Item, Integer> entry : item.entrySet()){
+			total += entry.getValue() * entry.getKey().getWeight();
+		}
+		return total;
+	}
 }
