@@ -34,6 +34,14 @@ public class CreateArray {
 		}
 	}
 	
+	public void run() {
+		for (int i = 0; i < deadline; i++) {
+			
+			
+			
+		}
+	}
+	
 	public String detect(int x, int y){
 		return this.tab.getClass().getName().toString();
 	}

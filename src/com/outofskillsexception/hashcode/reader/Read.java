@@ -128,7 +128,7 @@ public class Read {
 		}
 		
 		CreateArray map = new CreateArray(row, column, deadline, drones, items, warehouses, commandes);
-		
+		map.run();
 	}
 	
 	/**
