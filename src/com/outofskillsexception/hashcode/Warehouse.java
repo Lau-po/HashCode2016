@@ -39,7 +39,7 @@ public class Warehouse {
 	
 	public boolean removeFromWarehouse(Item item){
 		if(stock.get(item) != null && stock.get(item) > 0) {
-			stock.put(item, new Integer(new Integer(stock.get(item) - 1)));
+			stock.put(item, new Integer(stock.get(item) - 1));
 			return true;
 		}
 		return false;

@@ -70,25 +70,19 @@ public class Drone {
 	}
 
 	public boolean removeItems(Item i) {
-		int qte = 0;
-		if(this.item.containsKey(i))
-			qte = this.item.get(i);
-		if(qte > 1){
-			qte--;
-			this.item.put(i, qte);
+		if(item.get(i) != null && item.get(i) > 0) {
+			item.put(i, new Integer(item.get(i) - 1));
+			return true;
 		}
-		else
-			this.item.remove(i);
-		return true;
+		return false;
 	}
 
-	public void addItem(Item item) {
-		int qte;
-		if (this.item.containsKey(item)) {
-			qte = this.item.get(item) + 1;
-		} else
-			qte = 1;
-		this.item.put(item, qte);
+	public void addItem(Item i) {
+		if(item.get(i) != null) {
+			item.put(i, new Integer(item.get(i) + 1));
+		} else {
+		item.put(i, 1);
+		}
 	}
 	
 	public int getCurrentWeight(){
