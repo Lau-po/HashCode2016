@@ -8,20 +8,21 @@ public class Commande {
 	private String[] type;
 	private ArrayList<Commande> list;
 	private ArrayList<Drone> d;
-	
-	public Commande(int id, String name, String[] type, ArrayList<Drone> d){
+	private Drone free;
+
+	public Commande(int id, String name, String[] type, ArrayList<Drone> d, Drone free) {
 		this.id = id;
 		this.name = name;
 		this.type = type;
 		this.d = d;
-		Drone free;
-		for(int i = 0; i < d.size(); i++){
-			if(d.get(i).isFree())
+		this.free = free;
+		for (int i = 0; i < d.size(); i++) {
+			if (d.get(i).isFree())
 				free = d.get(i);
 		}
-		this.list.add(new Commande(id, name, type));
+		this.list.add(new Commande(id, name, type, d, free));
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -62,8 +63,8 @@ public class Commande {
 		this.d = d;
 	}
 
-	public void delivered(Commande commande){
-		if(list.contains(commande))
+	public void delivered(Commande commande) {
+		if (list.contains(commande))
 			list.remove(commande);
 	}
 }
