@@ -6,13 +6,23 @@ public class Drone {
 	private int weight,id;
 	private Point pos;
 	private Item item;
-	
+	private boolean free= false;
+
 	public Drone(int id, int weight, int x, int y, Item item) {
 		// TODO Auto-generated constructor stub
 		this.weight = weight;
 		this.id = id;
 		this.pos = new Point(x,y);
 		this.item = item;
+	}
+
+	
+	public boolean isFree() {
+		return free;
+	}
+
+	public void setFree(boolean free) {
+		this.free = free;
 	}
 
 	public int getWeight() {
