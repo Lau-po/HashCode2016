@@ -21,6 +21,7 @@ public class Read {
 	
 	private int numberWarehouse;
 	private int[][] warehousePosition;
+	private int[][] warehouseItems;
 	
 	public Read(String file) {
 		this(new File(file));
@@ -47,10 +48,13 @@ public class Read {
 			readNumberWarehouse(bufferedReader.readLine());
 			
 			warehousePosition = new int[numberWarehouse][2];
+			warehouseItems = new int[numberWarehouse][numberItemTypes];
 			
 			for (int i = 0; i < numberWarehouse; i++) {
-				
+				readPosition(bufferedReader.readLine(), i);
+				readItems(bufferedReader.readLine(), i);
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -94,5 +98,19 @@ public class Read {
 		numberWarehouse = Integer.parseInt(line);
 	}
 	
+	public void readPosition(String line, int warehouse) {
+		String[] params = line.split(" ");
+		
+		warehousePosition[warehouse][0] = Integer.parseInt(params[0]);
+		warehousePosition[warehouse][1] = Integer.parseInt(params[1]);
+	}
+	
+	public void readItems(String line, int warehouse) {
+		String[] params = line.split(" ");
+		
+		for (int i = 0; i < numberItemTypes; i++) {
+			warehouseItems[warehouse][i] = Integer.parseInt(params[i]);
+		}
+	}
 
 }
