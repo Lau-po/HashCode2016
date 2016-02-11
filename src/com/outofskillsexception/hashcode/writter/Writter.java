@@ -17,8 +17,8 @@ public class Writter {
 		INSTANCE.commandes.add(drone + " L " + warehouse + " " + product + " " + amount);
 	}
 	
-	public static void delivry(int drone, int warehouse, int product, int amount) {
-		INSTANCE.commandes.add(drone + " D " + warehouse + " " + product + " " + amount);
+	public static void delivry(int drone, int order, int product, int amount) {
+		INSTANCE.commandes.add(drone + " D " + order + " " + product + " " + amount);
 	}
 	
 	public static void save(File file) throws IOException {
