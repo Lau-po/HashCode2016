@@ -45,4 +45,8 @@ public class Warehouse {
 		return false;
 	}
 	
+	public Map<Item,Integer> getItems(){
+		return stock;
+	}
+	
 }
