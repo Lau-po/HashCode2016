@@ -42,6 +42,15 @@ public class CreateArray {
 	public void run() {
 
 		for (int e = 0; e < deadline; e++) {
+			if (e == 100) {
+				try {
+					Writter.save(new File("out"));
+					return;
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+			
 			boolean end = true;
 
 			for (Commande com : commandes) {
