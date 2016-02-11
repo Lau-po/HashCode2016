@@ -42,6 +42,7 @@ public class CreateArray {
 				drones[i].setFree(false);
 			}
 		}
+		int id = 0;
 		
 		for (int i = 0; i < deadline; i++) {
 		}
