@@ -5,10 +5,12 @@ import java.util.Map;
 public class Commande {
 	private int id;
 	private Map<Item, Integer> demmande;
+	private int[] position;
 
-	public Commande(int id, Map<Item,Integer> items) {
+	public Commande(int id, Map<Item,Integer> items, int[] position) {
 		this.id = id;
 		demmande = items;
+		this.position = position;
 	}
 	
 	public boolean isFinished() {
@@ -25,6 +27,10 @@ public class Commande {
 		return remeaning;
 	}
 	
+	public int getId() {
+		return id;
+	}
+	
 	public Map<Item, Integer> getDemmande() {
 		return demmande;
 	}
@@ -38,4 +44,7 @@ public class Commande {
 		return true;
 	}
 	
+	public int[] getPosition() {
+		return position;
+	}
 }

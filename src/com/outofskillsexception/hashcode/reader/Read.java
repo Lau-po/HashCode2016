@@ -124,7 +124,7 @@ public class Read {
 				}
 			}
 			
-			commandes[i] = new Commande(i, commandeItems);
+			commandes[i] = new Commande(i, commandeItems, orderPosition[i]);
 		}
 		
 		CreateArray map = new CreateArray(row, column, deadline, drones, items, warehouses, commandes);
