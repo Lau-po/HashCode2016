@@ -1,4 +1,4 @@
-package com.outofskillsexception.hashcode;
+package src.com.outofskillsexception.hashcode;
 
 public class CreateArray {
 	private Object[][] tab;

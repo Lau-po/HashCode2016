@@ -49,9 +49,7 @@ public class Read {
 		column = Integer.parseInt(params[1]);
 		numberOfDrones = Integer.parseInt(params[2]);
 		deadline = Integer.parseInt(params[3]);
-		maxLoad = Integer.parseInt(params[4]);
-		
-		System.out.println(row + " " + column + " " + numberOfDrones + " " + deadline + " " + maxLoad);
+		maxLoad = Integer.parseInt(params[4]);	
 	}
 
 }
