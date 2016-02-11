@@ -45,6 +45,14 @@ public class Warehouse {
 		return false;
 	}
 	
+	public void addItem(Item i) {
+		if(stock.get(i) != null) {
+			stock.put(i, new Integer(stock.get(i) + 1));
+		} else {
+		stock.put(i, 1);
+		}
+	}
+	
 	public Map<Item,Integer> getItems(){
 		return stock;
 	}

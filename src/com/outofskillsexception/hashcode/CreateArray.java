@@ -50,7 +50,7 @@ public class CreateArray {
 					e1.printStackTrace();
 				}
 			}
-			
+
 			boolean end = true;
 
 			for (Commande com : commandes) {
@@ -96,16 +96,20 @@ public class CreateArray {
 
 										for (int j = 0; j < pickup; j++) {
 											drones[i].addItem(item);
+											warhouse.removeFromWarehouse(item);
 										}
 
 										while (drones[i].getCurrentWeight() > drones[i].getWeight()) {
 											pickup--;
 											drones[i].removeItems(item);
+											warhouse.addItem(item);
 										}
 
-										drones[i].setTimeOut(1);
+										if (pickup > 0) {
+											drones[i].setTimeOut(1);
 
-										Writter.load(i, warhouse.getId(), item.getId(), pickup);
+											Writter.load(i, warhouse.getId(), item.getId(), pickup);
+										}
 									}
 								}
 							}
@@ -169,20 +173,24 @@ public class CreateArray {
 
 											for (int j = 0; j < pickup; j++) {
 												drones[i].addItem(item);
+												w.removeFromWarehouse(item);
 											}
 
 											while (drones[i].getCurrentWeight() > drones[i].getWeight()) {
 												pickup--;
 												drones[i].removeItems(item);
+												w.addItem(item);
 											}
 
 											float distance = (float) Math
 													.sqrt(Math.pow(drones[i].getPos().getX() - w.getPos()[0], 2)
 															+ Math.pow(drones[i].getPos().getY() - w.getPos()[1], 2));
 
-											drones[i].setTimeOut(1);
+											if (pickup > 0) {
+												drones[i].setTimeOut(1);
 
-											Writter.load(i, w.getId(), item.getId(), pickup);
+												Writter.load(i, w.getId(), item.getId(), pickup);
+											}
 										}
 									}
 								}

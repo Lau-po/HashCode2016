@@ -36,7 +36,8 @@ public class Commande {
 	}
 	
 	public boolean delivry(Item item) {
-		if (demmande.get(item) == null || demmande.get(item) <= 0) {
+		if (demmande.get(item) == null || demmande.get(item) == 0) {
+			demmande.remove(item);
 			return false;
 		}
 		

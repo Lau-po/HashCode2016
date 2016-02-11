@@ -24,12 +24,12 @@ public class Drone {
 	public void update() {
 		timeOut -= 1;
 		if (timeOut <= 0) {
-			setFree(true);
+			timeOut = 0;
 		}
 	}
 
 	public boolean isFree() {
-		return free;
+		return timeOut <= 0;
 	}
 
 	public void setFree(boolean free) {
