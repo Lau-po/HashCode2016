@@ -9,11 +9,11 @@ public class CreateArray {
 		tab = new ArrayList[x][y];
 	}
 
-	public void move(Object o, int n, int x) {
+	public void move(Object o, int x, int y) {
 		for (int i = 0; i < tab[0].length; i++) {
 			for (int j = 0; j < tab[1].length; j++) {
 				if (tab[i][j].contains(o)) {
-					tab[n][x].add(o);
+					tab[x][y].add(o);
 					if (tab[i][j].isEmpty())
 						tab[i][j] = null;
 					else
@@ -21,5 +21,9 @@ public class CreateArray {
 				}
 			}
 		}
+	}
+	
+	public String detect(int x, int y){
+		return this.tab.getClass().getName().toString();
 	}
 }
