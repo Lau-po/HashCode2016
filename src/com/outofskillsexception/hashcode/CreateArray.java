@@ -4,9 +4,20 @@ import java.util.ArrayList;
 
 public class CreateArray {
 	private ArrayList[][] tab;
+	
+	private Drone[] drones;
+	private Item[] items;
+	private Warehouse[] warehouses;
+	private Commande[] commandes;
+	private int deadline;
 
-	public CreateArray(int x, int y) {
+	public CreateArray(int x, int y, int deadline, Drone[] drones, Item[] items, Warehouse[] warehouses, Commande[] commandes) {
 		tab = new ArrayList[x][y];
+		this.deadline = deadline;
+		this.drones = drones;
+		this.items = items;
+		this.warehouses = warehouses;
+		this.commandes = commandes;
 	}
 
 	public void move(Object o, int x, int y) {

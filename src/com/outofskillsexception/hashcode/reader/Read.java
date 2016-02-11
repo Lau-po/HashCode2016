@@ -6,7 +6,9 @@ import java.io.FileReader;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.outofskillsexception.hashcode.Commande;
 import com.outofskillsexception.hashcode.CreateArray;
+import com.outofskillsexception.hashcode.Drone;
 import com.outofskillsexception.hashcode.Item;
 import com.outofskillsexception.hashcode.Warehouse;
 
@@ -85,7 +87,11 @@ public class Read {
 	 */
 	public void createClasses() {
 		
-		CreateArray map = new CreateArray(row, column);
+		Drone[] drones = new Drone[numberOfDrones];
+		
+		for (int i = 0; i < drones.length; i++) {
+			drones[i] = new Drone(i, maxLoad, warehousePosition[0][0], warehousePosition[0][1]);
+		}
 		
 		Item[] items = new Item[numberItemTypes];
 		
@@ -107,6 +113,21 @@ public class Read {
 			warehouses[i] = new Warehouse(i, warehousePosition[i], stock);
 		}
 		
+		Commande[] commandes = new Commande[numberOrder];
+		
+		for (int i = 0; i < commandes.length; i++) {
+			Map<Item, Integer> commandeItems = new HashMap<Item, Integer>();
+			
+			for (int j = 0; j < items.length; j++) {
+				if (orderItems[i][j] > 0) {
+					commandeItems.put(items[j], orderItems[i][j]);
+				}
+			}
+			
+			commandes[i] = new Commande(i, commandeItems);
+		}
+		
+		CreateArray map = new CreateArray(row, column, deadline, drones, items, warehouses, commandes);
 		
 	}
 	

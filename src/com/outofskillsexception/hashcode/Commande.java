@@ -1,29 +1,15 @@
 package com.outofskillsexception.hashcode;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 public class Commande {
 	private int id;
-	private String name;
-	private String[] type;
-	private ArrayList<Commande> list;
-	private ArrayList<Drone> d;
-	private HashMap<Item,Integer> items;
-	private Drone free;
+	private Map<Item, Integer> demmande;
 
-	public Commande(int id, String name, String[] type, ArrayList<Drone> d, Drone free ) {
+	public Commande(int id, Map<Item,Integer> items) {
 		this.id = id;
-		this.name = name;
-		this.type = type;
-		this.d = d;
-		this.free = free;
-		for (int i = 0; i < d.size(); i++) {
-			if (d.get(i).isFree())
-				free = d.get(i);
-		}
-		this.list.add(new Commande(id, name, type, d, free));
+		demmande = items;
 	}
 
 	public int getId() {
