@@ -3,6 +3,8 @@ package com.outofskillsexception.hashcode.reader;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.outofskillsexception.hashcode.CreateArray;
 import com.outofskillsexception.hashcode.Item;
@@ -92,6 +94,19 @@ public class Read {
 		}
 		
 		Warehouse[] warehouses = new Warehouse[numberWarehouse];
+		
+		for (int i = 0; i < warehouses.length; i++) {
+			Map<Item, Integer> stock = new HashMap<Item, Integer>();
+			
+			for (int j = 0; j < items.length; j++) {
+				if (warehouseItems[i][j] > 0) {
+					stock.put(items[j], warehouseItems[i][j]);
+				}
+			}
+			
+			warehouses[i] = new Warehouse(i, warehousePosition[i], stock);
+		}
+		
 		
 	}
 	
