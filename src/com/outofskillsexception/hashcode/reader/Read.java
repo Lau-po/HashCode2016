@@ -2,9 +2,7 @@ package com.outofskillsexception.hashcode.reader;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 
 public class Read {
 	
@@ -22,6 +20,10 @@ public class Read {
 	private int numberWarehouse;
 	private int[][] warehousePosition;
 	private int[][] warehouseItems;
+	
+	private int numberOrder;
+	private int[][] orderPosition;
+	private int[][] orderItems;
 	
 	public Read(String file) {
 		this(new File(file));
@@ -55,6 +57,17 @@ public class Read {
 				readItems(bufferedReader.readLine(), i);
 			}
 			
+			readNumberOrder(bufferedReader.readLine());
+			
+			orderPosition = new int[numberOrder][2];
+			orderItems = new int[numberOrder][numberItemTypes];
+			
+			for (int i = 0; i < numberOrder; i++) {
+				readOrderPosition(bufferedReader.readLine(), i);
+				readOrderItems(bufferedReader.readLine(), bufferedReader.readLine(), i);
+			}
+			
+			bufferedReader.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -112,5 +125,25 @@ public class Read {
 			warehouseItems[warehouse][i] = Integer.parseInt(params[i]);
 		}
 	}
-
+	
+	public void readNumberOrder(String line) throws Exception {
+		numberOrder = Integer.parseInt(line);
+	}
+	
+	public void readOrderPosition(String line, int order) {
+		String[] params = line.split(" ");
+		
+		orderPosition[order][0] = Integer.parseInt(params[0]);
+		orderPosition[order][1] = Integer.parseInt(params[1]);
+	}
+	
+	public void readOrderItems(String number, String types, int order) {
+		int nbr = Integer.parseInt(number);
+		
+		String[] items = types.split(" ");
+		
+		for (int i = 0; i < nbr; i++) {
+			orderItems[order][Integer.parseInt(items[i])] += 1;
+		}
+	}
 }
