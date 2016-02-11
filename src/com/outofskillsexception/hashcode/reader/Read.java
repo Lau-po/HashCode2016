@@ -20,7 +20,7 @@ public class Read {
 	private int[] itemWeight;
 	
 	private int numberWarehouse;
-	private int[][]
+	private int[][] warehousePosition;
 	
 	public Read(String file) {
 		this(new File(file));
@@ -45,6 +45,12 @@ public class Read {
 			readItemWeight(bufferedReader.readLine());
 			
 			readNumberWarehouse(bufferedReader.readLine());
+			
+			warehousePosition = new int[numberWarehouse][2];
+			
+			for (int i = 0; i < numberWarehouse; i++) {
+				
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
