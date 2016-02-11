@@ -37,5 +37,12 @@ public class Warehouse {
 		this.stock = stock;
 	}
 	
+	public boolean removeFromWarehouse(Commande c){
+		if(stock.containsKey(c.getItem())){
+			stock.remove(c.getItem());
+			return true;
+		}
+		return false;
+	}
 	
 }
