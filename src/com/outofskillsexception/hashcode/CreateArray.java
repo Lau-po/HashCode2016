@@ -35,10 +35,15 @@ public class CreateArray {
 	}
 	
 	public void run() {
+		Drone free;
+		for(int i = 0; i < drones.length; i++){
+			if(drones[i].isFree()) {
+				free = drones[i];
+				drones[i].setFree(false);
+			}
+		}
+		
 		for (int i = 0; i < deadline; i++) {
-			
-			
-			
 		}
 	}
 	
