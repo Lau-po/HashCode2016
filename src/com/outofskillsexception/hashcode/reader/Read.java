@@ -16,6 +16,12 @@ public class Read {
 	private int deadline;
 	private int maxLoad;
 	
+	private int numberItemTypes;
+	private int[] itemWeight;
+	
+	private int numberWarehouse;
+	private int[][]
+	
 	public Read(String file) {
 		this(new File(file));
 	}
@@ -33,6 +39,12 @@ public class Read {
 			BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
 			
 			readFirstLine(bufferedReader.readLine());
+			
+			readNumberItemTypes(bufferedReader.readLine());
+			
+			readItemWeight(bufferedReader.readLine());
+			
+			readNumberWarehouse(bufferedReader.readLine());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -51,5 +63,30 @@ public class Read {
 		deadline = Integer.parseInt(params[3]);
 		maxLoad = Integer.parseInt(params[4]);	
 	}
+	
+	/**
+	 * Read the number of item type
+	 */
+	public void readNumberItemTypes(String line) throws Exception {
+		numberItemTypes = Integer.parseInt(line);
+	}
+	
+	/**
+	 * Read the item weight
+	 */
+	public void readItemWeight(String line) throws Exception {
+		String[] params = line.split(" ");
+		
+		itemWeight = new int[numberItemTypes];
+		
+		for (int i = 0; i < params.length; i++) {
+			itemWeight[i] = Integer.parseInt(params[i]);
+		}
+	}
+	
+	public void readNumberWarehouse(String line) throws Exception {
+		numberWarehouse = Integer.parseInt(line);
+	}
+	
 
 }
